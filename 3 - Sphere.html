@@ -1,6 +1,7 @@
+
 <html>
     <head>
-        <title>2 - Displaying Cube</title>
+        <title>3 - Sphere</title>
         <link rel = "stylesheet" href = "Style.css">
         <script src = "three.min.js"></script>       
     </head>
@@ -9,49 +10,51 @@
 </html>
 
 <script>    
-    let scene, camera, renderer, cube;
-    let ADD = 0.1;
+    let scene, camera, renderer, sphere;
+    let ADD = 0.01;
     
-    let createCube = function() {
-        let geometry = new THREE.BoxGeometry(1, 1, 1 );
-        let material = new THREE.MeshBasicMaterial({color: 0x00a1cb});
-        cube = new THREE.Mesh( geometry, material );
-        scene.add(cube);
+    let createSphere = function() {
+        // let geometry = new THREE.SphereGeometry(5, 30, 30);
+
+         let geometry = new THREE.SphereGeometry(5, 30, 30, 0, Math.PI); 
+        //                                                     0, Math.PI / 2);
+        
+        let material = new THREE.MeshBasicMaterial({color: 0xffffff,
+                                                   wireframe: true});
+               
+        sphere = new THREE.Mesh( geometry, material );
+        scene.add(sphere);
     };
+    
     
     // set up the environment - 
     // initiallize scene, camera, objects and renderer
     let init = function() {
         // create the scene
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xffffee);
+        scene.background = new THREE.Color(0x000000);
         
         // create an locate the camera
         camera = new THREE.PerspectiveCamera(75, 
                         window.innerWidth / window.innerHeight, 
                         1, 1000);
-        camera.position.z = 5;
+        camera.position.z = 20;
         
-        // let axes = new THREE.AxesHelper(5);
-        // scene.add(axes);
-
-        createCube();
+        createSphere();
         
         // create the renderer   
         renderer = new THREE.WebGLRenderer();   
         renderer.setSize(window.innerWidth, window.innerHeight);
         
-        document.body.appendChild(renderer.domElement);  
+        document.body.appendChild(renderer.domElement);
+        
     };
    
+    
     // main animation loop - calls every 50-60 ms.
     let mainLoop = function() {
-        // cube.position.x += ADD;    
-        // cube.rotation.y -= ADD;
-        
-        if(cube.position.x <= -3 || cube.position.x >= 3)
-            ADD *= -1;
-        
+        // sphere.rotation.x += ADD;
+        sphere.rotation.y += ADD;
         renderer.render(scene, camera);
         requestAnimationFrame(mainLoop);
     };
