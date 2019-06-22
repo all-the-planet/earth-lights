@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Earth</title>
+		<title>Earth lights</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -14,10 +14,6 @@
 	<body>
 
 		<div id="container"></div>
-		<!-- <div id="info">
-            <a href="http://threejs.org" target="_blank" rel="noopener">
-                three.js</a> - earth demo
-        </div> -->
 
 		<script src="three.min.js"></script>
 
@@ -65,48 +61,12 @@
 
 				} );
 
-				// shadow
-
-				// var canvas = document.createElement( 'canvas' );
-				// canvas.width = 12;
-				// canvas.height = 12;
-
-				// var context = canvas.getContext( '2d' );
-				// var gradient = context.createRadialGradient(
-				// 	canvas.width / 2,
-				// 	canvas.height / 2,
-				// 	0,
-				// 	canvas.width / 2,
-				// 	canvas.height / 2,
-				// 	canvas.width / 2
-				// );
-				// gradient.addColorStop( 0.1, 'rgba(10,10,10,1)' );
-				// gradient.addColorStop( 1, 'rgba(5,5,5,1)' );
-
-				// context.fillStyle = gradient;
-				// context.fillRect( 0, 0, canvas.width, canvas.height );
-
-				// var texture = new THREE.CanvasTexture( canvas );
-
-				// var geometry = new THREE.PlaneBufferGeometry( 300, 300, 3, 3 );
-				// var material = new THREE.MeshBasicMaterial( { map: texture } );
-
-				// var mesh = new THREE.Mesh( geometry, material );
-				// mesh.position.y = - 250;
-				// mesh.rotation.x = - Math.PI / 2;
-				// group.add( mesh );
-
 				renderer = new THREE.SoftwareRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 
 				container.appendChild( renderer.domElement );
 
-				// stats = new Stats();
-				// container.appendChild( stats.dom );
-
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-
-				//
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
@@ -153,7 +113,6 @@
 				renderer.render( scene, camera );
 
 			}
-
 
 		</script>
 
